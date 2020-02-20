@@ -17,6 +17,7 @@ matplotlib = "*"
 plotly = "*"
 dash = "*"
 requests = "*"
+geopy = "*"
 
 [requires]
 python_version = "3.7"
