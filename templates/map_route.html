@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+<style>
+  .labels{
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 1;
+    pointer-events: none;
+    text-align: center;
+    width: 60px;
+    white-space: nowrap;
+}
+</style>
+
+{% block content %}
+    <div id="map"></div>
+    <script>
+
+
+    function placeWalkStops(stops,map, stop_text, stop_icons) {
+      console.log(stops)
+        var walkRootCoordinates=[]; // array
+
+        //you only need 1 infoWindow. this displays info on the stop
+         var infowindow = new google.maps.InfoWindow({
+           content: "holding" //content will be set later
+         });
+
+        for (i=0; i<stops.length; i++) {
+            console.log("placing stops")
+            console.log(stops[i][0])
+            console.log(stops[i][1])
+
+            var stopLatLng = {lat:stops[i][0], lng:stops[i][1]};
+            walkRootCoordinates.push(stopLatLng)
+            if (i > 0){
+              // skip the starting stop (already plotted)
+              var contentString=stop_text[i-1];
+              console.log(contentString)
+
+              var markerIcon = {
+                  url: stop_icons[i-1],
+                  scaledSize: new google.maps.Size(40, 40),
+                  labelOrigin: new google.maps.Point(20,15)
+                };
+
+              stop = new google.maps.Marker({
+                    position: stopLatLng,
+                    map: map,
+                    title: 'Stop ' + i,
+
+                    icon: markerIcon,
+                    label: {
+                      text: '# ' + i,
+                      color: "#000000",
+                      fontSize: "14px",
+                      fontWeight: "bold"
+                    }
+
+                });
+
+                // use closure to allow different text for different stops
+                google.maps.event.addListener(stop, 'click', function(content) {
+                    return function(){
+                        infowindow.setContent(content);//set the content
+                        infowindow.open(map,this);
+                    }
+                }(contentString));
+
+            }
+        }
+        // Add path
+        var walkPath = new google.maps.Polyline({
+          path: walkRootCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+        walkPath.setMap(map);
+    }
+
+      function initMap() {
+        var myLatLng = {lat: {{starting_lat}}, lng:{{starting_long}}};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Starting Point',
+          label: 'Start'
+        });
+      //  console.log({{ordered_stops | safe}})
+        placeWalkStops({{ordered_stops | safe }},map,{{stop_text}},{{stop_icons}});
+
+      }
+    </script>
+    <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&callback=initMap">
+   </script>
+  <!-- </body> -->
+</html>
+{% endblock %}

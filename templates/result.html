@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<CENTER>
+<div>
+  <br>
+  <h3> Your wait time is {{ prediction_time }} hours at {{ hospital }}.</h3>
+    <img src="https://img2.thejournal.ie/inline/2499585/original?width=415&version=2499585"/>
+
+</div>
+
+</CENTER>
+
+<style>
+  .labels{
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 1;
+    pointer-events: none;
+    text-align: center;
+    width: 60px;
+    white-space: nowrap;
+}
+</style>
+
+<br>
+
+<!-- map result -->
+<div id="map"></div>
+<script>
+
+
+  // place hospital markers
+  function placeHospitals(hospital_loc, map){
+    console.log(hospital_loc)
+
+
+    for (i=0; i<hospital_loc.length; i++) {
+      console.log(hospital_loc[i][0])
+      console.log(hospital_loc[i][1])
+
+      var stopLatLng = {lat:hospital_loc[i][0], lng:hospital_loc[i][1]};
+
+        var hospital = new google.maps.Marker({
+          position: stopLatLng,
+          map: map,
+          title: 'Hospital ' + i,
+          // icon: markerIcon,
+          label: {
+            text: hospital_loc[i][2],
+            color: "#000000",
+            fontSize: "12px",
+            fontWeight: "bold"
+          }
+        });
+
+        var contentString = hospital_loc[i][2];
+
+          google.maps.event.addListener(hospital, 'click', getInfoCallback(map, contentString));
+
+          function getInfoCallback(map, content) {
+            var infowindow = new google.maps.InfoWindow({content: content});
+            return function() {
+                  infowindow.setContent(content);
+                  infowindow.open(map, this);
+            };
+          }
+      }
+    }
+
+  function initMap() {
+    // lat, long from what was placed earlier
+    var myLatLng = {lat: {{starting_lat}}, lng:{{starting_long}}};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      // near GA
+      center: myLatLng,
+      zoom: 13
+    });
+    // var myLatLng = {lat: {{starting_lat}}, lng:{{starting_long}}};
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Starting Point',
+      label: 'Start'
+    });
+
+    var contentString = '<h1 id="firstHeading" class="firstHeading">Testing</h1>';
+
+    var infowindow = new google.maps.InfoWindow({
+    content: contentString
+    });
+
+    placeHospitals({{hospitals | safe }}, map);
+
+
+
+// listener just for original marker
+    marker.addListener('click', function() {
+    infowindow.open(map, marker);
+    });
+
+  }
+
+</script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&callback=initMap">
+  </script>
+
+
+{% endblock %}
