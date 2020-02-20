@@ -9,8 +9,8 @@ import os
 from geopy.geocoders import Nominatim # convert an address into latitude and longitude values
 
 
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
+# from dotenv import load_dotenv, find_dotenv
+# load_dotenv(find_dotenv())
 
 # register for google maps API
 GOOGLE_KEY = os.environ['GOOGLE_KEY']
