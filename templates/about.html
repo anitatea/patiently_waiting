@@ -1,19 +1,52 @@
 {% extends "layout.html" %}
-
-
 {% block content %}
-<h4>About Patiently Waiting</h4>
-<p>TorontoWalks was created as my capstone project for the Data Science Immersive program at Bitmaker/ General Assembly.  I love exploring new areas of the city and hope that this site encourages others to discover something new about Toronto!</p>
-<p>TorontoWalks is currently in beta testing.  If you notice any bugs, have any questions or suggestions, please drop me an email
-<a href="mailto:dataexplorations@outlook.com?subject=Feedback on TorontoWalks">dataexplorations@outlook.com</a></p>
 
-<p>The points of interest included in this site were gathered from:
+<br>
+<h3>About <b>PATIENTLY WAITING</b></h4>
+<CENTER>
+<img src='https://media.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif'/>
+</CENTER>
+<br>
+<br>
+<p>
+  <b>Welcome! PATIENTLY WAITING </b> was created as my capstone project for the Data Science Immersive program at Bitmaker / General Assembly.</p>
+
+<!-- MAYBE personal... -->
+<!-- https://www.kevinmd.com/blog/2019/06/heres-the-secret-to-emergency-department-efficiency.html -->
+<br>
+
+<h5> Who are you and why should I care? </h5>
+<p><a href="https://www.linkedin.com/in/anitat/" target="_new">Anita Tran</a>, Data Science Enthusiast who loves to learn, collaborate and create.</p>
+
+<p>Have you ever stepped foot in the emergency room of a hospital in Toronto either for a loved one or perhaps yourself, only to be met with a grueling long wait until you see any medical professional?</p>
+
+<p>It sucks and there should definitely be a better system, right? Having volunteered at Toronto Western Hospital Emergency Department and being able to experience both sides of the system, I wanted to dig deep at what's really going on and to actually do something about it.</p>
+
+<br>
+
+<h5> Data Gathering </h5>
+<p>Detailed administrative data on date, patient flow, current and past examinations in Ontario was provided by:
   <ul>
-    <li><a href="http://www.acotoronto.ca/tobuilt_new_detailed.php" target="_new">ACOToronto WebSite</a></li>
-    <li><a href="http://torontoplaques.com/Menu_Subjects.html" target="_new">Toronto Plaques</a></li>
-    <li><a href="http://www.cabbagetownpeople.ca/biographies/plaquees/" target="_new">Cabbagetown People</a></li>
-    <li><a href="https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#86b0f307-216b-3fe1-4653-c32ed9b6bf5c" target="_new">Toronto Public Art (City of Toronto Open Data)</a></li>
+    <li><a href="https://www.cihi.ca/en/national-ambulatory-care-reporting-system-metadata" target="_new">National Ambulatory Care Reporting System (NACRS)</a></li>
+    <li><a href="https://www.cihi.ca/en/access-data-and-reports" target="_new">Canadian Institude for Health Information (CIHI)</a></li>
   </ul>
 </p>
+
+<br>
+
+<h5> Data Modeling </h5>
+<p>The ability to accurately and reliably predict waiting times at walk-in hospital facilities can increase both patient satisfaction and hospital efficiency via a better management of patient flow. My web-app implements machine learning (ML) models to predict waiting times in the Emergency Room (ER) of the largest public hospital in the Greater Toronto Area (GTA).</p>
+
+<p> Several ML algorithms were evaluated to find the most accurate and useful prediction to a user. I chose <a href="https://medium.com/mlreview/gradient-boosting-from-scratch-1e317ae4587d" target="_new">Gradient Boosting</a> among other regression models explored for predicting wait times.
+</p>
+
+<br>
+
+<p><b>PATIENTLY WAITING</b> is currently in beta testing. If you notice any bugs, have any questions or suggestions, I'd love to hear from you:
+<a href="anita.tran38@gmail.com?subject=Feedback on PatientlyWaiting">anita.tran38@gmail.com</a>.</p>
+
+<CENTER>
+<img src="https://media.makeameme.org/created/me-patiently-waiting-399b1150e6.jpg" width=300>
+</CENTER>
 
 {% endblock %}

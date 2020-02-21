@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+
+<h4>Cool Things</h4>
+<p>Self-explainatory.</p>
+<br>
+<p>Stay tuned for a cool visual... To boil it down, in Ontario, the total number of all ED visits were ~6.4M and out of those, ~1.9M of visits were from frequent ED users.
+<a href="https://www.cihi.ca/en" target="_new">The National Ambulatory Care Reporting System</a> defines "Frequent ED user: Patient with four or more ED visits in the fiscal year".
+<br>
+<p><b>More than 1/4 of Ontario's ED visits are from someone who's been there 4 times or more.</b></p>
+<img src="{{ url_for('static', filename='img/frequent_users_chart.png') }}">
+
+
+{% endblock %}

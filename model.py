@@ -25,7 +25,6 @@ df.iloc[0,1]
 
 y = df[target]
 
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
 
 mapper = DataFrameMapper([
@@ -33,8 +32,8 @@ mapper = DataFrameMapper([
     ('day', [LabelBinarizer()]),
     (['Org_ID'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()]),
     (['WaitTime_90percentile'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()]),
-    (['case_per_day'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()]),
-    (['case_per_month'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()])
+    (['case_per_day'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()])
+    # (['case_per_month'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()])
 ])
 
 # score of 0.9837560259894104

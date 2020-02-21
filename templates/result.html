@@ -4,8 +4,10 @@
 <CENTER>
 <div>
   <br>
-  <h3> Your wait time is {{ prediction_time }} hours at {{ hospital }}.</h3>
-    <img src="https://img2.thejournal.ie/inline/2499585/original?width=415&version=2499585"/>
+  <h3> On a <b>{{day}}</b> in Toronto, your wait time is predicted to be ... well, why don't you check below?</h3>
+    <img src="https://media0.giphy.com/media/9EuG8bg3yzhzq/giphy.gif" width=500/>
+
+    <!-- https://img2.thejournal.ie/inline/2499585/original?width=415&version=2499585" -->
 
 </div>
 
@@ -47,16 +49,17 @@
           map: map,
           title: 'Hospital ' + i,
           // icon: markerIcon,
-          label: {
-            text: hospital_loc[i][2],
-            color: "#000000",
-            fontSize: "12px",
-            fontWeight: "bold"
-          }
+          // label: {
+          //   text: hospital_loc[i][2],
+          //   color: "#000000",
+          //   fontSize: "12px",
+          //   fontWeight: "bold"
+          // }
         });
 
-        var contentString = hospital_loc[i][2];
+        var contentString = hospital_loc[i][2] + '<div id="bodyContent">'+ "Wait Time (hrs.):  " + hospital_loc[i][4] + '</div>';
 
+        // use closure to allow different text for different stops
           google.maps.event.addListener(hospital, 'click', getInfoCallback(map, contentString));
 
           function getInfoCallback(map, content) {
@@ -83,7 +86,7 @@
       position: myLatLng,
       map: map,
       title: 'Starting Point',
-      label: 'Start'
+      label: "I'm here"
     });
 
     var contentString = '<h1 id="firstHeading" class="firstHeading">Testing</h1>';
@@ -92,20 +95,18 @@
     content: contentString
     });
 
-    placeHospitals({{hospitals | safe }}, map);
-
+    placeHospitals({{hospital_predictions | safe }}, map);
 
 
 // listener just for original marker
-    marker.addListener('click', function() {
-    infowindow.open(map, marker);
-    });
+    // marker.addListener('click', function() {
+    // infowindow.open(map, marker);
+    // });
 
   }
 
 </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&callback=initMap">
   </script>
-
 
 {% endblock %}

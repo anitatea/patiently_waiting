@@ -22,9 +22,13 @@
     /* Optional: Makes the sample page fill the window. */
     html, body {
       padding-top: 35px;
-	  padding-left: 10px;
+	    padding-left: 10px;
       height: 100%;
       margin: 0;
+      background-image: url(https://cdn130.picsart.com/262704258018202.jpg?type=webp&to=min&r=640);
+      background-size:cover;
+      background-repeat: no-repeat;
+      background-color: #ADD8E6;
     }
   </style>
   </head>
@@ -33,7 +37,7 @@
 
     <!-- Static navbar -->
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary justify-content-center">
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light justify-content-center">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="{{ url_for('hello') }}">
           <img src="{{ url_for('static', filename='img/logo.png') }}" width="50" height="50" />
@@ -47,7 +51,7 @@
               <a class="nav-link" href="{{ url_for('hello') }}"> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('discover')}}"> Discover Toronto </a>
+              <a class="nav-link" href="{{url_for('cool_things')}}"> Cool Things </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('about')}}"> About </a>
@@ -65,7 +69,9 @@
         <!-- footer -->
       <div class="footer">
         <hr>
+        <CENTER>
         <p><a target="_new" href="https://www.linkedin.com/in/anitat-analytics/">© Anita Tran - 2020</a></p>
+      </CENTER>
       </div>
 
     <!-- scripts -->
