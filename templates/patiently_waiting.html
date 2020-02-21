@@ -8,10 +8,10 @@
 <!-- If you are experiencing a medical emergency, please call 911 immediately. -->
 
     <form action="{{url_for('result')}}" method="POST">
-      <h6>What day would you like to check?</h6>
+      <h6>What day would you like to check for ED hospital wait times?</h6>
       <!-- <small id="profileHelp" class="form-text text-muted">This will help our walk bot generate a custom walk just for you.</small> -->
       <div class="form-group">
-        <label for="day">Select Day:</label>
+        <label for="day">Day:</label>
         <select name="day">
           <option value='Monday'>Monday</option>
           <option value='Tuesday'>Tuesday</option>
@@ -24,11 +24,13 @@
         <input hidden name="latitude" id="latitude" value="43.647273"/>
         <input hidden name="longitude" id="longitude" value ="-79.386560"/>
       </div>
-          <button type="submit" class="btn btn-primary">Tell me where I should go!  🚑</button>
+      <small id="durationHelp" class="form-text text-muted">* For this example, We're starting at General Assembly (200 King St. W).</small>
+      <br>
+          <button type="submit" class="btn btn-primary">Do I have to wait any longer?!  🚑</button>
     </form>
     <br>
 
-    <div id="map"></div>
+    <div id="map" style="width:100%;height:600px;"></div>
     <script>
       var map;
        var markers = [];

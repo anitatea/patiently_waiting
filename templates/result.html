@@ -57,7 +57,7 @@
           // }
         });
 
-        var contentString = hospital_loc[i][2] + '<div id="bodyContent">'+ "Wait Time (hrs.):  " + hospital_loc[i][4] + '</div>';
+        var contentString = hospital_loc[i][2] + '<div id="bodyContent">'+ "Wait Time (hrs.):  " + hospital_loc[i][4] + '<br>' + '</div>';
 
         // use closure to allow different text for different stops
           google.maps.event.addListener(hospital, 'click', getInfoCallback(map, contentString));
