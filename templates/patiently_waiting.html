@@ -6,7 +6,7 @@
 <h5>A smarter way to check emergency department wait times in Toronto.</h5>
 <br>
 <!-- If you are experiencing a medical emergency, please call 911 immediately. -->
-
+    <CENTER>
     <form action="{{url_for('result')}}" method="POST">
       <h6>What day would you like to check for ED hospital wait times?</h6>
       <!-- <small id="profileHelp" class="form-text text-muted">This will help our walk bot generate a custom walk just for you.</small> -->
@@ -24,12 +24,14 @@
         <input hidden name="latitude" id="latitude" value="43.647273"/>
         <input hidden name="longitude" id="longitude" value ="-79.386560"/>
       </div>
-      <small id="durationHelp" class="form-text text-muted">* For this example, We're starting at General Assembly (200 King St. W).</small>
-      <br>
-          <button type="submit" class="btn btn-primary">Do I have to wait any longer?!  🚑</button>
+
+      <button type="submit" class="btn btn-primary">Do I have to wait any longer?!  🚑</button>
+      <small id="durationHelp" class="form-text text-muted">* For this example, we're starting at General Assembly (200 King St. W).</small>
     </form>
     <br>
-
+    <img src ="https://media1.giphy.com/media/ZXKZWB13D6gFO/giphy.gif" width=250x>
+    </CENTER>
+    <br>
     <div id="map" style="width:100%;height:600px;"></div>
     <script>
       var map;
