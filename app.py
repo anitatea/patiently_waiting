@@ -2,15 +2,15 @@ import pickle
 import numpy as np
 import pandas as pd
 import json
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory, Response
 
 import os
 
 from geopy.geocoders import Nominatim # convert an address into latitude and longitude values
 
 # comment out when uploading to Heroku
-# from dotenv import load_dotenv, find_dotenv
-# load_dotenv(find_dotenv())
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 # google maps API
 GOOGLE_KEY = os.environ['GOOGLE_KEY']

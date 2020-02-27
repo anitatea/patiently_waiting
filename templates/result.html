@@ -6,9 +6,6 @@
   <br>
   <h3> On a <b>{{day}}</b> in Toronto, your wait time is predicted to be ... well, why don't you check below?</h3>
     <img src="https://media0.giphy.com/media/9EuG8bg3yzhzq/giphy.gif" width=500/>
-
-    <!-- https://img2.thejournal.ie/inline/2499585/original?width=415&version=2499585" -->
-
 </div>
 
 </CENTER>
@@ -61,7 +58,6 @@
 
         // use closure to allow different text for different stops
           google.maps.event.addListener(hospital, 'click', getInfoCallback(map, contentString));
-
           function getInfoCallback(map, content) {
             var infowindow = new google.maps.InfoWindow({content: content});
             return function() {
