@@ -8,9 +8,9 @@ import os
 
 from geopy.geocoders import Nominatim # convert an address into latitude and longitude values
 
-# comment out when uploading to Heroku
-# from dotenv import load_dotenv, find_dotenv
-# load_dotenv(find_dotenv())
+# comment out when uploading to Heroku !!
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 # google maps API
 GOOGLE_KEY = os.environ['GOOGLE_KEY']
@@ -77,14 +77,6 @@ def favicon():
 def hello():
     google_key = GOOGLE_KEY
     return render_template('patiently_waiting.html', google_key=google_key)
-
-@app.route('/page')
-def page():
-    return render_template('toronto_walks.html')
-
-@app.route('/stylebyarea', methods=['POST', 'GET'])
-def stylebyarea():
-    return render_template('predominant_styles_by_neighbourhood.html')
 
 @app.route('/cool_things', methods=['POST', 'GET'])
 def cool_things():
