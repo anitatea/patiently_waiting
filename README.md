@@ -13,7 +13,7 @@ Have you ever stepped foot in the emergency room of a hospital in Toronto either
 
 It sucks. And there should definitely be a better system, right? Having volunteered at Toronto Western Hospital Emergency Department and being able to experience both sides of the system, I wanted to dig deep at what's really going on and to actually do something about it.
 
-<img src="https://github.com/anitatea/patiently_waiting/static/img/ss.png?raw=true">
+<img src="https://github.com/anitatea/patiently_waiting/blob/master/static/img/ss.png?raw=true">
 
 
 ### Technologies Used
