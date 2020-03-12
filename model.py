@@ -15,6 +15,7 @@ import pickle
 # import clean data
 df = pd.read_csv('data_final.csv')
 
+
 X = df.drop(['OrgName', 'orgSort','WaitTime_percent_within_target', 'ResultType', 'Target', 'PriorityDescription'], axis=1)
 
 target = 'WaitTime_mean'
@@ -28,10 +29,12 @@ y = df[target]
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
 
 mapper = DataFrameMapper([
-    ('Key', [CategoricalImputer(), LabelBinarizer()]),
+    # ('Key', [CategoricalImputer(), LabelBinarizer()]),
     ('day', [LabelBinarizer()]),
-    (['Org_ID'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()]),
-    (['WaitTime_90percentile'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()]),
+    ('Org_ID', [LabelBinarizer()]), #, PolynomialFeatures(include_bias=False)
+    # (['Org_ID'], [SimpleImputer(), StandardScaler()]), #, PolynomialFeatures(include_bias=False)
+    (['WaitTime_90percentile'], [SimpleImputer(), StandardScaler()]),
+# PolynomialFeatures(include_bias=False),
     (['case_per_day'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()])
     # (['case_per_month'], [SimpleImputer(), PolynomialFeatures(include_bias=False), StandardScaler()])
 ])
@@ -41,6 +44,7 @@ est = GradientBoostingRegressor(n_estimators=100, max_depth=1)
 pipe = make_pipeline(mapper, est)
 pipe.fit(X_train, y_train)
 pipe.score(X_test, y_test)
+
 
 pickle.dump(pipe, open('model/pipe.pkl', 'wb'))
 

@@ -43,30 +43,44 @@ def append_hospital_info(df_pred):
 
 hospital_ids = [1364, 1359, 4935, 3742, 4824, 4931, 4800, 4831, 4850]
 
-def predict_wait_times(day):
-    pred = pd.DataFrame()
-    for id in hospital_ids:
-        # finds averages
-        print(day)
-        filtered = df.loc[(df['day'] == day) & (df['Org_ID'] == id)]
-        avg_90percentile = filtered['WaitTime_90percentile'].sum()/len(filtered)
-        avg_num_per_day = filtered['case_per_day'].sum()/len(filtered)
-        print(avg_num_per_day)
+# def predict_wait_times(day):
+day = 'Friday'
+id = 1364
+month = 201906
+pred = pd.DataFrame()
+for id in hospital_ids:
+    # finds averages based on the day
+filtered = df.loc[(df['day'] == day) & (df['Org_ID'] == id)]
 
-        new = pd.DataFrame({
-            'Key': 202002,
-            'day':[day],
-            'Org_ID': id, # [result.get('Org_ID')],
-            'WaitTime_90percentile': avg_90percentile,
-            'case_per_day': avg_num_per_day
-        })
-        # model and round to 2 decimal places
-        row = [[id, '{:,.2f}'.format(pipe.predict(new)[0])]]
-        pred = pred.append(row)
+# below is ALWAYS the same for the day...
+# avg_90percentile = filtered['WaitTime_90percentile'].mean()
+filter_percentile = filtered[filtered['Key'] == month]
+filter_percentile['WaitTime_90percentile']
 
-    # to be merged with hospital_loc
-    pred = pred.rename(columns={0:'id'})
+avg_num_per_day = filtered['case_per_day'].mean()
+
+new = pd.DataFrame({
+    # 'Key': [month],
+    'day':[day],
+    'Org_ID': id, # [result.get('Org_ID')],
+    'WaitTime_90percentile': filter_percentile['WaitTime_90percentile'],
+    'case_per_day': avg_num_per_day
+})
+
+new
+# model and round to 2 decimal places
+row = [[id, '{:,.5f}'.format(pipe.predict(new)[0])]]
+pred = pred.append(row)
+
+# to be merged with hospital_loc
+pred = pred.rename(columns={0:'id'})
+pred.head(15)
+
     return pred
+
+
+
+
 
 # adding favicon
 @app.route('/logo.ico')

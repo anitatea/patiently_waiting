@@ -57,6 +57,7 @@ df_wait_times.head(1)
 # to test one sample
 df_test = df_wait_times
 
+# based on numbers from CIHI (reference in README)
 d = {'Monday': 0.151593223,'Tuesday':0.148917637,'Wednesday':0.147174568,'Thursday':0.146813667,'Friday':0.143226496,'Saturday':0.129701107,'Sunday':0.132573301}
 
 days_of_week = pd.DataFrame(data=d, index=[0])
@@ -79,7 +80,6 @@ for row in range(len(df_test)):
         df_test2 = df_test2.append(df_test.iloc[row]) # appending to df_test_2
 
 df_test2.info()
-
 
 
 # convert to CSV
