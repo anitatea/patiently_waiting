@@ -1,6 +1,6 @@
 # Patiently Waiting
 
-Check emergency room wait times around Toronto by choosing a day: https://patientlywaiting.herokuapp.com/
+Check emergency room wait times around Toronto: https://patientlywaiting.herokuapp.com/
 
 ## **Goal**
 
