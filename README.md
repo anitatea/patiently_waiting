@@ -45,7 +45,7 @@ The ability to accurately and reliably predict waiting times at walk-in hospital
  Several ML algorithms were evaluated to find the most accurate and useful prediction to a user. I chose [Gradient Boosting](https://medium.com/mlreview/gradient-boosting-from-scratch-1e317ae4587d) among other regression models explored for predicting wait times.
 
 
-**PATIENTLY WAITING** is currently in beta testing. If you notice any bugs, have any questions or suggestions, I'd love to hear from you: [anita.tran38@gmail.com](anita.tran38@gmail.com?subject=Feedback on PatientlyWaiting).
+**PATIENTLY WAITING** is currently in beta testing. If you notice any bugs, have any questions or suggestions, I'd love to hear from you: [anita.tran38@gmail.com](anita.tran38@gmail.com?subject=Feedback_on_PatientlyWaiting).
 
 
 <img src="https://media.makeameme.org/created/me-patiently-waiting-399b1150e6.jpg" width=300>
